@@ -9,6 +9,7 @@ import { db } from "../services/config/firebase";
 const NavBar = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const categoriesCollection = collection(db, "categories");
