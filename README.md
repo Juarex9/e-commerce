@@ -2,118 +2,10 @@ Descripción
 -----------
 Aplicación frontend de un e-commerce desarrollada con React. Interfaz completa para mostrar productos, agregar al carrito, filtrar/buscar productos y finalizar compra (frontend-only). Cuenta con una demo desplegada en Vercel: https://e-commerce-gamma-indol.vercel.app/
 
-Tabla de contenidos
-------------------
-- [Características](#características)
-- [Demo](#demo)
-- [Tecnologías](#tecnologías)
-- [Instalación](#instalación)
-- [Variables de entorno](#variables-de-entorno)
-- [Estructura del proyecto](#estructura-del-proyecto)
-- [Comandos útiles](#comandos-útiles)
-- [Despliegue (Vercel)](#despliegue-vercel)
-- [Buenas prácticas y pruebas](#buenas-prácticas-y-pruebas)
-- [Contribuir](#contribuir)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
-- [Agradecimientos](#agradecimientos)
-
-Características
----------------
-- Catálogo de productos con paginación y/o filtrado.
-- Vista de detalle de producto.
-- Carrito de compras con gestión de cantidades.
-- Formulario de checkout (frontend) con validaciones.
-- Búsqueda y filtros por categoría/precio.
-- Diseño responsive pensado para móviles y escritorio.
-- Integración preparada para consumir APIs externas (separación de servicios).
-
-Demo
-----
-Accede a la demo en Vercel: https://e-commerce-gamma-indol.vercel.app/
-
-Tecnologías
-----------
-- React
-- JavaScript (ES6+)
-- HTML & CSS (posible uso de CSS Modules / SASS / Tailwind según el proyecto)
-- Herramientas comunes (Vite o Create React App, dependiendo de la configuración)
-- Librerías opcionales: react-router, axios/fetch, context/redux, styled-components / Tailwind
-
-Instalación
-----------
-Clona el repositorio y ejecuta los comandos necesarios:
-
-```bash
-# Clona el repositorio
-git clone https://github.com/Juarex9/e-commerce.git
-cd e-commerce
-
-# Instala dependencias (npm)
-npm install
-
-# Si usas yarn
-# yarn
-```
-
-Arrancar en desarrollo:
-
-```bash
-# Modo desarrollo
-npm start
-# o si el proyecto usa Vite
-# npm run dev
-```
-
-Construir para producción:
-
-```bash
-npm run build
-```
-
-Estructura del proyecto
------------------------
-Estructura sugerida (ajusta según tu implementación):
-
-```
-/public
-/src
-  /assets          # imágenes, iconos, fuentes
-  /components      # componentes reutilizables (Header, Footer, ProductCard, ...)
-  /pages           # vistas/plantillas (Home, Product, Cart, Checkout)
-  /contexts        # React Contexts (Auth, Cart)
-  /services        # configuración de Firebase
-  /hooks           # custom hooks
-  index.js
-  App.jsx
-package.json
-README.md
-```
-
-Comandos útiles
----------------
-Los scripts pueden variar según la configuración del proyecto. Ejemplos comunes:
-
-- `npm start` — Ejecuta la app en modo desarrollo (Create React App).
-- `npm run dev` — Ejecuta la app en modo desarrollo (Vite).
-- `npm run build` — Genera la versión de producción.
-- `npm run preview` — Visualiza la build de producción localmente (si está disponible).
-- `npm test` — Ejecuta tests (si están configurados).
-- `npm run lint` — Linter (ESLint) para comprobar calidad de código.
-
 License
 -------
 Este proyecto está bajo la licencia MIT. Reemplaza o modifica según prefieras.
 
-Agradecimientos
----------------
-- Inspirado en prácticas comunes de proyectos React.
-- Muchas librerías y recursos Open Source que facilitan el desarrollo frontend.
-
-Contacto
--------
-- Repo: https://github.com/Juarex9/e-commerce
-- Demo: https://e-commerce-gamma-indol.vercel.app/
  
 ## Stack tecnológico 
 
@@ -155,7 +47,7 @@ src/
 
 La configuración está en `src/services/config/firebase.js`. Allí se inicializa Firebase y se exporta la instancia de Firestore.
 
-+**Colecciones esperadas:**
+**Colecciones esperadas:**
 
 - `products`: catálogo de productos.
 - `cart`: órdenes generadas en checkout.
@@ -217,4 +109,4 @@ npm run lint
 - Las rutas están definidas en `src/routes/index.jsx`.
 
 ---
-)
+
