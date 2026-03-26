@@ -7,11 +7,11 @@ import { CartProvider } from './context/CartContext.jsx';
 
 const App = () => {
     return (
-      <ChakraProvider>
-        <CartProvider>
-          <RouterProvider router={router} />
-        </CartProvider>
-      </ChakraProvider>
+        <ChakraProvider>
+            <CartProvider>
+                <RouterProvider router={router} />
+            </CartProvider>
+        </ChakraProvider>
     );
 };
 

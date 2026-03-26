@@ -1,29 +1,74 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../services/config/firebase";
+import { productsApi } from "../services/api";
 
-export const useProducts = () => {
+export const useProducts = (category = null) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const productsCollection = collection(db, "products");
+    let alive = true;
 
-    getDocs(productsCollection)
-      .then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setProducts(data);
-      })
-      .catch((e) => {
+    (async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = category && category !== 'all'
+          ? await productsApi.getByCategory(category)
+          : await productsApi.getAll();
+
+        if (alive) {
+          setProducts(response.data);
+        }
+      } catch (e) {
         console.error("Error loading products:", e);
-        setError(e);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+        if (alive) setError(e);
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [category]);
 
   return { products, loading, error };
+};
+
+export const useProduct = (id) => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (!id) return;
+
+    let alive = true;
+
+    (async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await productsApi.getById(id);
+        
+        if (alive) {
+          setProduct(response.data);
+        }
+      } catch (e) {
+        console.error("Error loading product:", e);
+        if (alive) setError(e);
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [id]);
+
+  return { product, loading, error };
 };

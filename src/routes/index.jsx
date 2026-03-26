@@ -4,7 +4,6 @@ import MainLayout from '../layouts/MainLayout';
 import Item from '../pages/Item';
 import Category from '../pages/Category';
 import NotFound from '../pages/NotFound';
-import AddDoc from '../pages/AddDoc';
 import Cart from "../pages/Cart";
 import Checkout from '../pages/Checkout';
 
@@ -34,20 +33,11 @@ const routes = [
                 element: <Checkout />
             },
             {
-                path: '/add-doc',
-                element: <AddDoc />
-            },
-            {
                 path: "*",
                 element: <NotFound/>
             },
         ]
     },
-    {
-        path: '/login',
-        element: <>Login</>
-    },
 ];
-
 
 export const router = createBrowserRouter(routes);

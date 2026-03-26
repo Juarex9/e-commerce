@@ -37,6 +37,10 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const getTotalCount = () => {
     return cart.reduce((total, item) => Number(total) + item.cantidad, 0);
   };
@@ -58,6 +62,7 @@ export const CartProvider = ({ children }) => {
         getTotalCount,
         deleteProductFromCart,
         getTotalPrice,
+        clearCart,
       }}
     >
       {children}
